@@ -1,0 +1,21 @@
+<ng-container *ngIf="!games.length; else elseTemplate">
+    <app-spinner *ngIf="thereAreGames"></app-spinner>
+
+    <div *ngIf="!thereAreGames"
+         class="alert alert-primary text-center mt-3">
+        List game is empty
+    </div>
+</ng-container>
+
+<ng-template #elseTemplate>
+    <div class="row my-4 justify-content-center">
+        <div class="col-md-4" *ngFor="let game of games">
+
+            <!-- Este enlace de evento lo cree para sacer del arreglo el juego eliminado para que desaparezca del UI -->
+            <app-card-game [gameChild]="game" (idGameToDeleted)="removeGameDeletedOfArray($event)"></app-card-game>
+
+        </div>
+    </div>
+</ng-template>
+
+

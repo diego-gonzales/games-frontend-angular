@@ -1,0 +1,59 @@
+
+<div class="container">
+    <div class="row justify-content-center align-items-center my-4">
+        <div class="col-md-4 border py-3 m-2">
+            <form [formGroup]="myForm"
+                  (ngSubmit)="submitForm()">
+
+                <div class="mb-3">
+                    <input type="text"
+                           class="form-control form-control-lg"
+                           placeholder="Name"
+                           formControlName="name">
+                    <div class="form-text text-danger d-flex justify-content-end"
+                         *ngIf="fieldIsInvalid('name')">
+                        Field Required
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <textarea class="form-control form-control-lg"
+                              placeholder="Description"
+                              id="floatingTextarea"
+                              formControlName="description">
+                    </textarea>
+                    <div class="form-text text-danger d-flex justify-content-end"
+                         *ngIf="fieldIsInvalid('description')">
+                        Field Required
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <input type="text"
+                           class="form-control form-control-lg"
+                           placeholder="Image URL"
+                           formControlName="imageURL">
+                    <div class="form-text text-danger d-flex justify-content-end"
+                         *ngIf="fieldIsInvalid('imageURL')">
+                        {{errorMessage}}
+                    </div>
+                </div>
+
+                <div class="d-grid mt-4">
+                    <button type="submit"
+                            class="btn btn-success btn-lg">
+                        SAVE
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-4 border py-3 m-2 text-center">
+            <img [src]="myForm.value.imageURL | noImage" [alt]="myForm.value.name">
+            <h3>{{myForm.value.name || 'GAME TITLE'}}</h3>
+            <p>{{myForm.value.description || 'Your description'}}</p>
+            <!-- <p>03-06-2021</p> -->
+        </div>
+
+    </div>
+</div>

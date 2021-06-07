@@ -1,0 +1,19 @@
+<div class="card mb-3" style="width: 100%;">
+    <div class="card-header d-flex justify-content-between">
+        <div class="align-self-center">
+            {{game.name}}
+        </div>
+        <button class="btn btn-danger"
+                (click)="deleteGame()">
+            <i class="far fa-trash-alt"></i>
+        </button>
+    </div>
+    <img [src]="game.imageURL" class="card-img-top" [alt]="game.name">
+    <div class="card-body text-center d-grid">
+        <p class="card-text">{{game.description}}</p>
+        <a class="btn btn-primary"
+           [routerLink]="['/games/update', game._id]">
+            UPDATE GAME
+        </a>
+    </div>
+</div>
